@@ -1,0 +1,36 @@
+	<div id="post_column">
+	<div id="articles">	
+	<% unless @posts.empty? %>	
+	<% @posts.each do |post| %>
+	<article class="post clearfix" id="post_{PostID}">
+	<div class="post-z-frame">
+	<img src="<%= post.image1 %>" alt="window"/>
+	<img src="<%= post.image2 %>" alt="window"/>
+	<%= post.thoughts %> <br/>
+	</div>
+	<div class="post-head"></div>
+	<div class="post-foot"></div>
+	</article>
+	<% end %>
+	
+	<% else %>
+	<p>No Posts</p>
+	<% end %>	
+	</div>
+	
+	<article class="post clearfix" id="post_{PostID}">
+	<div class="post-z-frame">
+	<form method="post" action="/post/create" id="the_form" enctype="multipart/form-data">	
+	<input type="file" name="pic1" id="file_chooser1"/>
+	<input type="file" name="pic2" id="file_chooser2"/>
+	
+	<textarea id="thinkingtext" rows="5" wrap="physical" name="thoughts">
+		What are you thinking about now?
+	</textarea>	
+	<input type="submit" value="upload"/>
+	</form>
+	</div>
+	<div class="post-head"></div>
+	<div class="post-foot"></div>
+	</article>
+	

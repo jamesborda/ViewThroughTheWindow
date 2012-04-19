@@ -4,9 +4,19 @@
 	<% @posts.each do |post| %>
 	<article class="post clearfix" id="post_{PostID}">
 	<div class="post-z-frame">
-	<img src="<%= post.image1 %>" alt="window"/>
-	<img src="<%= post.image2 %>" alt="window"/>
-	<%= post.thoughts %> <br/>
+		<header>
+			<h1>
+				<!--a href="{Permalink}"><%= post.user_name %>, <%= post.city %>, <%= post.country %></a-->
+				<a href=""><%= post.user_name %>, <%= post.city %>, <%= post.country %></a>
+			</h1>
+		</header>
+		<div class="text-box">
+			<h2><%= post.thoughts %></h2> <br/>
+		</div>
+		<div class="image-stack">
+			<img src="<%= post.image1 %>" alt="window" width="325px" height="225px"/>
+			<img src="<%= post.image2 %>" alt="window" width="325px" height="225px"/>
+		</div>
 	</div>
 	<div class="post-head"></div>
 	<div class="post-foot"></div>
@@ -21,13 +31,40 @@
 	<article class="post clearfix" id="post_{PostID}">
 	<div class="post-z-frame">
 	<form method="post" action="/post/create" id="the_form" enctype="multipart/form-data">	
-	<input type="file" name="pic1" id="file_chooser1"/>
-	<input type="file" name="pic2" id="file_chooser2"/>
+	<!--input type="file" name="pic1" id="file_chooser1"/>
+	<input type="file" name="pic2" id="file_chooser2"/-->
 	
-	<textarea id="thinkingtext" rows="5" wrap="physical" name="thoughts">
+	<div class="text-box">
+		<textarea id="thinkingtext" rows="5" wrap="physical" name="thoughts">
+			What are you thinking about now?
+		</textarea>
+		<textarea id="user_name_text" rows="1" wrap="physical" name="user_name">
+			Your name
+		</textarea>
+		<textarea id="city_text" rows="1" wrap="physical" name="city">
+			City
+		</textarea>
+		<textarea id="country_text" rows="1" wrap="physical" name="country">
+			Country
+		</textarea>
+		<input type="submit" value="upload"/>
+	</div>
+	<div class="image-stack">
+		<input type="file" name="pic1" id="file_chooser1"/>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<input type="file" name="pic2" id="file_chooser2"/>
+	</div>
+	
+	
+	<!--textarea id="thinkingtext" rows="5" wrap="physical" name="thoughts">
 		What are you thinking about now?
 	</textarea>	
-	<input type="submit" value="upload"/>
+	<input type="submit" value="upload"/-->
 	</form>
 	</div>
 	<div class="post-head"></div>
